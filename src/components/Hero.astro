@@ -1,0 +1,183 @@
+---
+import Icon from "./Icon.astro";
+
+// No Chrome Web Store listing exists yet — point the primary CTA at the
+// extension repo's README install steps. Swap `href` for the Web Store URL
+// once the extension is published.
+const installHref = "https://github.com/kostyrko/trailroam-for-strava#install";
+const githubHref = "https://github.com/kostyrko/trailroam-for-strava";
+const docsHref = "https://kostyrko.github.io/trailroam-docs/docs/strava/intro";
+---
+
+<header class="hero">
+  <a class="hero__corner" href={githubHref} target="_blank" rel="noopener" aria-label="View on GitHub">
+    <Icon name="github" size={22} />
+  </a>
+
+  <div class="container hero__inner">
+    <img class="hero__logo" src="/logo.svg" alt="Trailroam logo" width="96" height="96" />
+    <p class="eyebrow hero__eyebrow">Chrome extension for Strava</p>
+    <h1 class="hero__title">Trailroam for Strava</h1>
+    <p class="hero__tagline">
+      All your activities and trails on one map. Analyze, explore, and plan your next
+      adventure — right in your browser, with nothing leaving your device.
+    </p>
+
+    <div class="hero__cta">
+      <a class="btn btn--primary" href={installHref} target="_blank" rel="noopener">
+        <Icon name="download" size={20} />
+        Install for Chrome
+      </a>
+      <a class="btn btn--ghost" href={githubHref} target="_blank" rel="noopener">
+        <Icon name="github" size={20} />
+        View on GitHub
+      </a>
+    </div>
+
+    <a class="hero__docs" href={docsHref} target="_blank" rel="noopener">Read the docs →</a>
+  </div>
+
+  <a class="hero__scroll" href="#features" aria-label="Scroll to features">
+    <Icon name="compass" size={26} />
+  </a>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    background:
+      radial-gradient(120% 80% at 50% 0%, rgba(31, 111, 80, 0.35), transparent 60%),
+      linear-gradient(180deg, var(--c-hero-bg), #050a08);
+    overflow: hidden;
+  }
+
+  .hero__corner {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.15s ease;
+  }
+  .hero__corner:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding-block: 96px;
+  }
+
+  .hero__logo {
+    width: 96px;
+    height: 96px;
+    filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.4));
+  }
+
+  .hero__eyebrow {
+    color: #7fd1a8;
+    margin-top: 4px;
+  }
+
+  .hero__title {
+    color: #fff;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__tagline {
+    max-width: 640px;
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.55;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .hero__docs {
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hero__docs:hover {
+    color: #fff;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.55);
+    animation: bob 1.8s ease-in-out infinite;
+  }
+  .hero__scroll:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 6px); }
+  }
+
+  /* shared buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+  }
+  .btn:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  .btn--primary {
+    background: var(--c-green);
+    color: #fff;
+  }
+  .btn--primary:hover {
+    background: var(--c-green-dark);
+    color: #fff;
+  }
+  .btn--ghost {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.28);
+  }
+  .btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+
+  @media (max-width: 560px) {
+    .hero__cta { flex-direction: column; width: 100%; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>

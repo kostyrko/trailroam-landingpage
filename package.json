@@ -1,0 +1,17 @@
+{
+  "name": "trailroam-landingpage",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Landing page for Trailroam for Strava — a Chrome extension that puts all your Strava activities on one map.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.16.0"
+  }
+}

@@ -1,0 +1,120 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import FeatureSlide from "../components/FeatureSlide.astro";
+import InstallSection from "../components/InstallSection.astro";
+import Footer from "../components/Footer.astro";
+
+// Screenshot -> feature mapping is editable here.
+// Screenshots live in /public/screenshots/.
+const features = [
+  {
+    icon: "lock",
+    eyebrow: "Private by default",
+    title: "Your data stays on your device",
+    body: "Every activity and GPS route is stored locally in your browser's IndexedDB. Nothing is uploaded to any server — there is no server.",
+    bullets: [
+      "No account, no sign-up beyond your existing Strava session.",
+      "Nothing leaves your browser, ever.",
+      "Works offline once activities are imported.",
+    ],
+    image: "/screenshots/overview.png",
+    alt: "Trailroam interface overview showing the activity map",
+    flip: false,
+  },
+  {
+    icon: "map",
+    eyebrow: "One map for everything",
+    title: "See all your routes at a glance",
+    body: "A full-page MapLibre map renders every imported activity together, on free OpenFreeMap tiles — no API key required.",
+    bullets: [
+      "Free OpenFreeMap tiles, no API key or billing.",
+      "Routes cluster into count circles when zoomed out.",
+      "Click any activity to zoom straight to its route.",
+    ],
+    image: "/screenshots/map-view.png",
+    alt: "Trailroam map view with multiple routes drawn together",
+    flip: true,
+  },
+  {
+    icon: "sync",
+    eyebrow: "Smart sync",
+    title: "Import with your logged-in session",
+    body: "Trailroam opens Strava in a new tab and imports activities using your existing browser session — no OAuth setup, no tokens to manage.",
+    bullets: [
+      "Uses your already-logged-in Strava session.",
+      "Incremental sync: only new activities are fetched.",
+      "Re-run anytime to pull in recent rides and runs.",
+    ],
+    image: "/screenshots/routes.png",
+    alt: "Trailroam importing activities from Strava",
+    flip: false,
+  },
+  {
+    icon: "filter",
+    eyebrow: "Filter & find",
+    title: "Find the route you're looking for",
+    body: "Filter by activity type and date. Click an activity to jump to it on the map, or browse your whole history at once.",
+    bullets: [
+      "Filter by activity type and date range.",
+      "Click to zoom to any route instantly.",
+      "Clustered overview keeps things tidy at any zoom.",
+    ],
+    image: "/screenshots/details.png",
+    alt: "Trailroam filtering activities by type and date",
+    flip: true,
+  },
+  {
+    icon: "share",
+    eyebrow: "Export & share",
+    title: "Take your routes anywhere",
+    body: "Download any route as a GPX file for Garmin, Komoot, or your GPS watch — or generate a shareable ZIP bundle with a map screenshot and GPX files.",
+    bullets: [
+      "Per-route GPX export for Garmin, Komoot, and more.",
+      "Shareable ZIP with map screenshot + GPX files.",
+      "Bring your Strava history into any other tool.",
+    ],
+    image: "/screenshots/export.png",
+    alt: "Trailroam exporting routes as GPX and share bundles",
+    flip: false,
+  },
+];
+---
+
+<Layout>
+  <Hero />
+
+  <section class="section features" id="features">
+    <div class="container">
+      {features.map((f, i) => (
+        <FeatureSlide
+          icon={f.icon}
+          eyebrow={f.eyebrow}
+          title={f.title}
+          body={f.body}
+          bullets={f.bullets}
+          image={f.image}
+          alt={f.alt}
+          flip={f.flip}
+        />
+      ))}
+    </div>
+  </section>
+
+  <InstallSection />
+  <Footer />
+</Layout>
+
+<style>
+  .features .container {
+    display: flex;
+    flex-direction: column;
+    /* alternating divider between slides */
+  }
+  .features :global(.slide) {
+    border-bottom: 1px solid var(--c-border);
+  }
+  .features :global(.slide:last-child) {
+    border-bottom: none;
+  }
+</style>

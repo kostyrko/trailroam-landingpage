@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Trailroam for Strava — All your activities on one map",
+  description =
+    "View all your Strava activities and trails on one map. Local-first, private, and right in your browser. Sync, explore, filter, and export your routes as GPX.",
+} = Astro.props;
+
+// Astro resolves `site` + `base` for us; canonical + OG URLs use the live Pages URL.
+const siteUrl = Astro.site ?? new URL("https://kostyrko.github.io");
+const baseUrl = Astro.site ? new URL(Astro.base ?? "/", siteUrl) : new URL("https://kostyrko.github.io/trailroam-landingpage/");
+const canonical = new URL(Astro.url.pathname, baseUrl).toString();
+const ogImage = new URL("/screenshots/overview.png", baseUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#00532f" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Trailroam for Strava" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Inter (matches the extension's UI typography) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
