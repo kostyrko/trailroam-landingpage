@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { withBase } from "../lib/asset";
 
 export interface Props {
   title?: string;
@@ -16,7 +17,9 @@ const {
 const siteUrl = Astro.site ?? new URL("https://kostyrko.github.io");
 const baseUrl = Astro.site ? new URL(Astro.base ?? "/", siteUrl) : new URL("https://kostyrko.github.io/trailroam-landingpage/");
 const canonical = new URL(Astro.url.pathname, baseUrl).toString();
-const ogImage = new URL("/screenshots/overview.png", baseUrl).toString();
+// Absolute URL for social previews: site + base + asset path.
+const ogImage = new URL(withBase("/screenshots/overview.png"), siteUrl).toString();
+const favicon = withBase("/favicon.svg");
 ---
 
 <!doctype html>
@@ -24,7 +27,7 @@ const ogImage = new URL("/screenshots/overview.png", baseUrl).toString();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>

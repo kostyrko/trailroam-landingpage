@@ -1,14 +1,16 @@
 ---
 import Icon from "./Icon.astro";
+import { withBase } from "../lib/asset";
 const year = new Date().getFullYear();
 const githubHref = "https://github.com/kostyrko/trailroam-for-strava";
 const docsHref = "https://kostyrko.github.io/trailroam-docs/docs/strava/intro";
+const logo = withBase("/logo.svg");
 ---
 
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
-      <img src="/logo.svg" alt="" width="28" height="28" />
+      <img src={logo} alt="" width="28" height="28" />
       <span>Trailroam for Strava</span>
     </div>
 

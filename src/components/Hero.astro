@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+import { withBase } from "../lib/asset";
 
 // No Chrome Web Store listing exists yet — point the primary CTA at the
 // extension repo's README install steps. Swap `href` for the Web Store URL
@@ -7,6 +8,7 @@ import Icon from "./Icon.astro";
 const installHref = "https://github.com/kostyrko/trailroam-for-strava#install";
 const githubHref = "https://github.com/kostyrko/trailroam-for-strava";
 const docsHref = "https://kostyrko.github.io/trailroam-docs/docs/strava/intro";
+const logo = withBase("/logo.svg");
 ---
 
 <header class="hero">
@@ -15,7 +17,7 @@ const docsHref = "https://kostyrko.github.io/trailroam-docs/docs/strava/intro";
   </a>
 
   <div class="container hero__inner">
-    <img class="hero__logo" src="/logo.svg" alt="Trailroam logo" width="96" height="96" />
+    <img class="hero__logo" src={logo} alt="Trailroam logo" width="96" height="96" />
     <p class="eyebrow hero__eyebrow">Chrome extension for Strava</p>
     <h1 class="hero__title">Trailroam for Strava</h1>
     <p class="hero__tagline">

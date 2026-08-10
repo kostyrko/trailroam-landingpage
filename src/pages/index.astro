@@ -4,6 +4,7 @@ import Hero from "../components/Hero.astro";
 import FeatureSlide from "../components/FeatureSlide.astro";
 import InstallSection from "../components/InstallSection.astro";
 import Footer from "../components/Footer.astro";
+import { withBase } from "../lib/asset";
 
 // Screenshot -> feature mapping is editable here.
 // Screenshots live in /public/screenshots/.
@@ -18,7 +19,7 @@ const features = [
       "Nothing leaves your browser, ever.",
       "Works offline once activities are imported.",
     ],
-    image: "/screenshots/overview.png",
+    image: withBase("/screenshots/overview.png"),
     alt: "Trailroam interface overview showing the activity map",
     flip: false,
   },
@@ -32,7 +33,7 @@ const features = [
       "Routes cluster into count circles when zoomed out.",
       "Click any activity to zoom straight to its route.",
     ],
-    image: "/screenshots/map-view.png",
+    image: withBase("/screenshots/map-view.png"),
     alt: "Trailroam map view with multiple routes drawn together",
     flip: true,
   },
@@ -46,7 +47,7 @@ const features = [
       "Incremental sync: only new activities are fetched.",
       "Re-run anytime to pull in recent rides and runs.",
     ],
-    image: "/screenshots/routes.png",
+    image: withBase("/screenshots/routes.png"),
     alt: "Trailroam importing activities from Strava",
     flip: false,
   },
@@ -60,7 +61,7 @@ const features = [
       "Click to zoom to any route instantly.",
       "Clustered overview keeps things tidy at any zoom.",
     ],
-    image: "/screenshots/details.png",
+    image: withBase("/screenshots/details.png"),
     alt: "Trailroam filtering activities by type and date",
     flip: true,
   },
@@ -74,7 +75,7 @@ const features = [
       "Shareable ZIP with map screenshot + GPX files.",
       "Bring your Strava history into any other tool.",
     ],
-    image: "/screenshots/export.png",
+    image: withBase("/screenshots/export.png"),
     alt: "Trailroam exporting routes as GPX and share bundles",
     flip: false,
   },
